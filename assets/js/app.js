@@ -72,3 +72,23 @@ $("#dismiss, .overlay").on("click", function() {
     }
   }, 600);
 });
+
+$(document).ready(function() {
+  $("#sidebar").mCustomScrollbar({
+    theme: "minimal"
+  });
+
+  $(window).scroll(function() {
+    var _scroll = $(this).scrollTop() > 50;
+    $("nav").toggleClass("scrolled", _scroll);
+  
+    // Add a helper class to the top_banner_second
+    $("#top_banner_second").toggleClass("navbar-scrolled", _scroll);
+    // Also close any open megamenus
+    if (_scroll) {
+      $(".navbar__subnav.show")
+        .prev("a.navbar__subnav--trigger")
+        .click();
+    }
+  });
+})
